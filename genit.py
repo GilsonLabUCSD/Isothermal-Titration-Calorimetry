@@ -12,7 +12,7 @@ M0 = float(sys.argv[2])/1000  # Cell Concentration
 dV = float(sys.argv[3])/1000000  # Injection Size
 Ninj = int(sys.argv[4])  # Number of injections
 
-dH = float(sys.argv[5]) # Binding Enthalpy (kcal/mol)
+dH = float(sys.argv[5])*1000 # Binding Enthalpy (kcal/mol)
 K = float(sys.argv[6])  # Equilibrium Constant (M^-1)
 N = 1  # Binding Stoich
 
