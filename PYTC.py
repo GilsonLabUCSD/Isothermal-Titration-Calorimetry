@@ -2,6 +2,7 @@ import numpy as np
 from scipy import stats
 from scipy.optimize import curve_fit
 import sys
+#print(sys.version)
 
 if len(sys.argv) < 10:
   print "ARGUMENT SYNTAX:\n [1]INJECTION VOLUME(uL)\n [2]NUMBER OF FITTING CYCLES\n [3]SYRINGE CONCENTRATION(mM)\n [4]CELL CONCENTRATION(mM)\n [5]SYRINGE CONCENTRATION PERCENT UNCERTAINTY\n [6]CELL CONCENTRATION PERCENT UNCERTAINTY\n [7]HEAT PERCENT UNCERTAINTY\n [8]BASELINE UNCERTAINTY (ucal) [9]N FIXED (TRUE = 1, FALSE = 0)\n [10]FILE CONTAINING RAW INTEGRATED INJECTION HEATS IN ONE COLUMN\n"
@@ -121,6 +122,7 @@ for n in range(Ncyc):
     varN[n]=N
     varSS[n]=SumSqr
     covmat[n] = covs[0]
+    print dH, covs[0]
   ### Fit the data while fixing N      
   if FIX == 1:
     ### Fit the data
@@ -140,8 +142,8 @@ for n in range(Ncyc):
     varSS[n]=SumSqr
     covmat[n] = covs[0]
 
-if FIX == 0:
-  print "# dH= ",np.mean(vardH),"+/-",np.std(vardH),"K= ",np.mean(varK),"+/-",np.std(varK),"N= ",np.mean(varN),"+/-",np.std(varN)
+#if FIX == 0:
+  #print "# dH= ",np.mean(vardH),"+/-",np.std(vardH)/65,np.mean(covmat)/65,"K= ",np.mean(varK),"+/-",np.std(varK),"N= ",np.mean(varN),"+/-",np.std(varN)*100
 
-if FIX == 1:
-  print "# dH= ",np.mean(vardH),"+/-",np.std(vardH),"K= ",np.mean(varK),"+/-",np.std(varK)
+#if FIX == 1:
+  #print "# dH= ",np.mean(vardH),"+/-",np.std(vardH)/65,np.mean(covmat)/65,"K= ",np.mean(varK),"+/-",np.std(varK)
