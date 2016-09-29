@@ -99,7 +99,7 @@ for n in range(Ncyc):
   
   ### Generate new Wiseman plot based on heat uncertainty, re-scale heats based on each re-sampled syringe concentration
   for i in range(len(ITC)):
-    parITC[i]=np.random.normal(ITC[i],abs(np.sqrt((ITC[i]*Heat_Err)**2)+((Base_Err)**2))) # Add heat error
+    parITC[i]=np.random.normal(ITC[i],abs(np.sqrt(((ITC[i]*Heat_Err)**2)+((Base_Err)**2)))) # Add heat error
     varITC[i]=(parITC[i]/(dV*X0)) # Scale nominal Wiseman plot by new bootstrapped syringe concentration
   ### Fit the data allowing N to float
   if FIX == 0:
